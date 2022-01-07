@@ -100,8 +100,11 @@
   <script>
   function loadVideo() {
     if (window.location.hash.length < 2) {
-      window.location.hash = prompt("Enter a YouTube watch link (e.g. https://www.youtube.com/watch?v=eBLvnK57lqM)")
-      return
+      const hash = prompt("Enter a YouTube watch link (e.g. https://www.youtube.com/watch?v=eBLvnK57lqM)")
+      if (hash) {
+        window.location.hash = hash
+        return
+      }
     }
 
     try {
