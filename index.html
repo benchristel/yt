@@ -113,7 +113,7 @@
     try {
       // IMPORTANT:
       // check the format of the video ID to prevent injection attacks!
-      const videoId = /[&?]v=([A-Za-z0-9_-]{11})/.exec(window.location.hash)[1]
+      const videoId = /(?:[&?]v=)?([A-Za-z0-9_-]{11})/.exec(window.location.hash)[1]
       console.log(videoId, window.location.hash)
 
       if (videoId) {
