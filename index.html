@@ -113,7 +113,7 @@
     try {
       // IMPORTANT:
       // check the format of the video ID to prevent injection attacks!
-      const videoId = /(?:[&?]v=)?([A-Za-z0-9_-]{11})/.exec(window.location.hash)[1]
+      const videoId = parseVideoId(window.location.hash)
       console.log(videoId, window.location.hash)
 
       if (videoId) {
@@ -143,6 +143,17 @@
       The URL should contain a YouTube watch link.<br/>
       Try: <a href="${exampleUrl}">${exampleUrl}</a>
     </p>`
+  }
+
+  function parseVideoId(s) {
+    let match = /[&?]v=([A-Za-z0-9_-]{11})/.exec(s)
+    if (match) {
+      return match[1]
+    } else if (match = /([A-Za-z0-9_-]{11})/.exec(s)) {
+      return match[1]
+    } else {
+      return null
+    }
   }
 
   window.addEventListener("hashchange", loadVideo)
