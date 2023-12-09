@@ -95,10 +95,11 @@
         </ol>
       </details>
 
-      <p>Made by <a href="https://benchristel.github.io">benchristel.github.io</a></p>
+      <p>Made by <a href="https://benchristel.github.io">benchristel.github.io</a>.</p>
 
       <!-- </small> -->
     </details>
+    <p><a id="embed-link" href="#">Raw embed link</a></p>
   </body>
   <script>
   function loadVideo() {
@@ -116,11 +117,14 @@
       const videoId = parseVideoId(window.location.hash)
       console.log(videoId, window.location.hash)
 
+      const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&iv_load_policy=3&autoplay=1`
+      document.getElementById("embed-link").href = embedUrl
+
       if (videoId) {
         videoTarget.innerHTML = `<iframe
           width="560"
           height="315"
-          src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&iv_load_policy=3&autoplay=1"
+          src="${embedUrl}"
           frameborder="0"
           allow="autoplay; encrypted-media;"
           allowfullscreen>
